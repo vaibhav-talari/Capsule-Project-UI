@@ -1,0 +1,34 @@
+<div>
+    <h2 style="text-align: center">Update Task</h2>
+    <hr>
+    <form *ngIf="isload" (ngSubmit)="updateBook()">
+      <div class="form-group">
+        <label>Task:</label>
+        <input type="text" class="form-control" placeholder="Enter Task" name="NewchildTask" [(ngModel)]="editTask.childTask">
+      </div>
+  
+     <div class="form-group slidecontainer">
+        <label>Priority:</label>
+        {{editTask.priority}}
+        <input type="range" min="1" max="30" class="form-control slider" placeholder="Enter Priority" name="Newpriority" [(ngModel)]="editTask.priority">
+      </div>
+      <div class="form-group">
+        <label>Parent Task:</label>
+        <input type="text" class="form-control" placeholder="Enter Parent Task" name="Newparent" [(ngModel)]="editTask.parent.parentTask">
+      </div>
+      <div class="form-group">
+        <label>Start Date</label>
+        <input type="date" class="form-control" placeholder="Enter Start Date" name="NewstartDate" [(ngModel)]="editTask.startDate" disabled>
+      </div>
+      <div class="form-group">
+        <label>End Date</label>
+        <input type="date" class="form-control" placeholder="Enter End Date" name="NewendDate" [(ngModel)]="editTask.endDate">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+  
+    </form>
+  </div>
+  <br>
+  <div class="alert alert-success text-center" role="alert" *ngIf=isUpdated>
+   <p> Task Updated </p>
+  </div>

@@ -1,0 +1,59 @@
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Task:</label>
+      <input type="text" class="form-control" placeholder="Search Task" name="childTask" [(ngModel)]="userFilter.childTask">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Parent Task:</label>
+      <input type="text" class="form-control" placeholder="Search Parent Task" name="parent" [(ngModel)]="userFilter.parent.parentTask">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Priority:</label>
+      <input type="number" class="form-control" placeholder="Search By Priority" name="priority" [(ngModel)]="userFilter.priority">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Start Date:</label>
+      <input type="date" class="form-control" placeholder="Search By Priority" name="startDate" [(ngModel)]="userFilter.startDate">
+    </div>
+    <div class="form-group col-md-4">
+      <label>End Date:</label>
+      <input type="date" class="form-control" placeholder="Search By Priority" name="endDate" [(ngModel)]="userFilter.endDate">
+    </div>
+  </div>
+</form>
+<hr>
+<form>
+
+  <div class="row" *ngFor="let one of childTask | filterBy:userFilter:priority:startDate:endDate:{parent:'!'}">
+    <div class="col col-md-2">
+      <label class="font-weight-bold text-monospace">Task:</label>
+      <p>{{one.childTask}}</p>
+    </div>
+    <div class="col col-md-2">
+      <label class="font-weight-bold text-monospace">Parent Task:</label>
+      <p>{{one.parent?.parentTask}}</p>
+    </div>
+    <div class="col col-md-2">
+      <label class="font-weight-bold text-monospace">Priority:</label>
+      <p>{{one.priority}}</p>
+    </div>
+    <div class="col col-md-2">
+      <label class="font-weight-bold text-monospace">Start Date:</label>
+      <p>{{one.startDate}}</p>
+    </div>
+    <div class="col col-md-2">
+      <label class="font-weight-bold text-monospace">End Date:</label>
+      <p>{{one.endDate}}</p>
+    </div>
+    <div class="col col-md-1">
+      <a routerLink="/edittask/{{one.childTaskID}}" *ngIf="!one.endTask" class="badge badge-primary">Edit</a>
+    </div>
+    <div class="col col-md-1">
+      <button class="badge badge-danger" (click)="EndTask(one.childTaskID)" > End Task</button>
+    </div>
+  </div>
+</form>
