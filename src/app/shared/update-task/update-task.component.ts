@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChildTask } from 'src/app/model/child-task';
 import { ChildTaskAPIService } from 'src/app/service/child-task-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-task',
@@ -15,7 +15,7 @@ export class UpdateTaskComponent implements OnInit {
   isUpdated: boolean;
   isload: boolean=false;
 
-  constructor(private childTaskAPI: ChildTaskAPIService, private getparam: ActivatedRoute) {
+  constructor(private childTaskAPI: ChildTaskAPIService, private getparam: ActivatedRoute,private auto:Router) {
     this.getparam.params
       .subscribe(params => {
         console.log(params);
@@ -49,6 +49,16 @@ export class UpdateTaskComponent implements OnInit {
         console.log(resp)
         this.isUpdated = true;
       });
+      setTimeout(()=>{
+        this.auto.navigate(['viewtask']);
+         },1000);
+  }
+
+  reDirect(){
+    setTimeout(()=>{
+      this.auto.navigate(['']);
+       },500);
+
   }
   actualTask: Object = {};
   editTask: Object = {};

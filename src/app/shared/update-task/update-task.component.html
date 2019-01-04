@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!editTask.endTask">
     <h2 style="text-align: center">Update Task</h2>
     <hr>
     <form *ngIf="isload" (ngSubmit)="updateBook()">
@@ -24,8 +24,8 @@
         <label>End Date</label>
         <input type="date" class="form-control" placeholder="Enter End Date" name="NewendDate" [(ngModel)]="editTask.endDate">
       </div>
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-  
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+      <button (click)="reDirect()" class="btn btn-secondary btn-lg btn-block">Cancel</button>
     </form>
   </div>
   <br>

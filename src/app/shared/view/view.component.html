@@ -28,7 +28,7 @@
 <hr>
 <form>
 
-  <div class="row" *ngFor="let one of childTask | filterBy:userFilter:priority:startDate:endDate:{parent:'!'}">
+  <div class="row" *ngFor="let one of childTask | filterBy:userFilter">
     <div class="col col-md-2">
       <label class="font-weight-bold text-monospace">Task:</label>
       <p>{{one.childTask}}</p>
@@ -53,7 +53,7 @@
       <a routerLink="/edittask/{{one.childTaskID}}" *ngIf="!one.endTask" class="badge badge-primary">Edit</a>
     </div>
     <div class="col col-md-1">
-      <button class="badge badge-danger" (click)="EndTask(one.childTaskID)" > End Task</button>
+      <button class="badge badge-danger" (click)="EndTask(one.childTaskID)"> End Task</button>
     </div>
   </div>
 </form>
